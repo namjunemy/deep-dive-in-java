@@ -1,0 +1,3 @@
+rootProject.name = 'deep-dive-in-java'
+include 'java-8'
+

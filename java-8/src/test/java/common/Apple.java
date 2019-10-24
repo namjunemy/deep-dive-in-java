@@ -1,27 +1,27 @@
-package method_reference;
+package common;
 
 import lombok.Getter;
 
 @Getter
-class Apple {
+public class Apple {
     private String name;
     private int weight;
     private int rank;
 
-    Apple() {
+    public Apple() {
 
     }
 
-    Apple(String name) {
+    public Apple(String name) {
         this.name = name;
     }
 
-    Apple(String name, int weight) {
+    public Apple(String name, int weight) {
         this.name = name;
         this.weight = weight;
     }
 
-    Apple(String name, int weight, int rank) {
+    public Apple(String name, int weight, int rank) {
         this.name = name;
         this.weight = weight;
         this.rank = rank;

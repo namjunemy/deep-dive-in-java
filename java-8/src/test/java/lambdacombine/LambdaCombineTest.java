@@ -1,4 +1,4 @@
-package lambda_combine;
+package lambdacombine;
 
 import common.Apple;
 import org.junit.jupiter.api.BeforeEach;

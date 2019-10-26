@@ -1,4 +1,4 @@
-package behavior_parameterization;
+package behaviorparameterization;
 
 import org.junit.jupiter.api.Test;
 

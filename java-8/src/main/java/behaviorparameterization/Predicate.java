@@ -1,4 +1,4 @@
-package behavior_parameterization;
+package behaviorparameterization;
 
 public interface Predicate<T> {
     boolean test(T t);

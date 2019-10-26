@@ -1,4 +1,4 @@
-package behavior_parameterization;
+package behaviorparameterization;
 
 public class AppleHeavyWeightPredicate implements ApplePredicate {
 

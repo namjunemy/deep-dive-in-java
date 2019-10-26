@@ -1,4 +1,4 @@
-package method_reference;
+package methodreference;
 
 public interface TriFunction<T, U, V, R> {
 

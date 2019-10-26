@@ -1,4 +1,4 @@
-package lambda_ex;
+package lambdaex;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

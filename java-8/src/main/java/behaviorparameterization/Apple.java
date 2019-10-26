@@ -1,4 +1,4 @@
-package behavior_parameterization;
+package behaviorparameterization;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -8,12 +8,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Banana {
+public class Apple {
     private String color;
     private int weight;
 
     @Builder
-    public Banana(String color, int weight) {
+    public Apple(String color, int weight) {
         this.color = color;
         this.weight = weight;
     }

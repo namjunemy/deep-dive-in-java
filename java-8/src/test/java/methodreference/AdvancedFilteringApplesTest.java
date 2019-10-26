@@ -1,4 +1,4 @@
-package method_reference;
+package methodreference;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

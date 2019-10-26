@@ -1,4 +1,4 @@
-package method_reference;
+package methodreference;
 
 import common.Apple;
 import org.junit.jupiter.api.DisplayName;

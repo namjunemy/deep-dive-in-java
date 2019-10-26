@@ -1,4 +1,4 @@
-package lambda_ex;
+package lambdaex;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

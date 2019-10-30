@@ -22,7 +22,6 @@ import streamex.Dishes;
 @DisplayName("스트림 활용")
 public class StreamUtilTest {
 
-
     @Test
     @Order(1)
     @DisplayName("스트림 필터링, 슬라이싱")

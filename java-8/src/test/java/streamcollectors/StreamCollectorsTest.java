@@ -157,4 +157,15 @@ class StreamCollectorsTest {
             .collect(Collectors.partitioningBy(Dish::getVegetarian,
                                                Collectors.groupingBy(Dish::getType)));
     }
+
+    @Test
+    @DisplayName("커스텀 컬렉터 구현")
+    void customCollect() {
+        List<Dish> collect = Dishes.getDefault()
+            .stream()
+            .filter(Dish::getVegetarian)
+            .collect(new CustomCollector<>());
+
+        assertThat(collect.size()).isEqualTo(4);
+    }
 }

@@ -1,19 +1,21 @@
 package streamcollectors;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import streamex.Dish;
-import streamex.Dishes;
+import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import java.util.stream.IntStream;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import streamex.Dish;
+import streamex.Dishes;
 
 @DisplayName("Collectors 클래스의 정적 팩토리 메서드 종합 선물 세트")
 class StreamCollectorsTest {
@@ -167,5 +169,52 @@ class StreamCollectorsTest {
             .collect(new CustomCollector<>());
 
         assertThat(collect.size()).isEqualTo(4);
+    }
+
+    @Test
+    @DisplayName("커스텀 컬렉터 간단하게 사용하기 - supplier, accumulator, combiner 만 사용(Characteristics 전달 불가)")
+    void customCollect2() {
+        List<Dish> collect = Dishes.getDefault()
+            .stream()
+            .filter(Dish::getVegetarian)
+            .collect(ArrayList::new, List::add, List::addAll);
+
+        assertThat(collect.size()).isEqualTo(4);
+    }
+
+    @Test
+    @DisplayName("커스텀 컬렉터 간단하게 사용 - 소수, 비소수 분할")
+    void customCollect3() {
+        int n = 10;
+        Map<Boolean, List<Integer>> collect = IntStream.rangeClosed(2, n)
+            .boxed()
+            .collect(
+                // supplier
+                () -> new HashMap<Boolean, List<Integer>>() {
+                    {
+                        put(true, new ArrayList<>());
+                        put(false, new ArrayList<>());
+                    }
+                },
+                // accumulator
+                (acc, candidate) -> {
+                    acc.get(isPrime(candidate)).add(candidate);
+                },
+                // combiner
+                (map1, map2) -> {
+                    map1.get(true).addAll(map2.get(true));
+                    map1.get(false).addAll(map2.get(false));
+                }
+            );
+
+        assertThat(collect.get(true).size()).isEqualTo(4); // 2, 3, 5, 7
+        assertThat(collect.get(false).size()).isEqualTo(5); // 4, 6, 8, 9, 10
+    }
+
+    private boolean isPrime(int candidate) {
+        // 소수의 대상을 주어진 수의 제곱근 이하의 수로 제한 할 수 있음.
+        int candidateRoot = (int) Math.sqrt(candidate);
+        return IntStream.rangeClosed(2, candidateRoot)
+            .noneMatch(i -> candidate % i == 0);
     }
 }

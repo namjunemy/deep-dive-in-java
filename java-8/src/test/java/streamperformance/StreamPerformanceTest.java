@@ -14,21 +14,35 @@ class StreamPerformanceTest {
     @Test
     @Order(1)
     void sequentialSum() {
-        log.info("Sequential sum done in: {} msecs", measureSumPerformance(ParallelStreams::sequentialSum, 20_000_000));
+        log.info("Sequential sum done in: {} msecs", measureSumPerformance(ParallelStreams::sequentialSum, 30_000_000));
     }
 
     @DisplayName("iterativeSum 성능")
     @Test
     @Order(2)
     void iterativeSum() {
-        log.info("Iterative sum done in: {} msecs", measureSumPerformance(ParallelStreams::iterativeSum, 20_000_000));
+        log.info("Iterative sum done in: {} msecs", measureSumPerformance(ParallelStreams::iterativeSum, 30_000_000));
     }
 
     @DisplayName("parallelSum 성능")
     @Test
     @Order(3)
     void parallelSum() {
-        log.info("Parallel sum done in: {} msecs", measureSumPerformance(ParallelStreams::parallelSum, 20_000_000));
+        log.info("Parallel sum done in: {} msecs", measureSumPerformance(ParallelStreams::parallelSum, 30_000_000));
+    }
+
+    @DisplayName("특화된 메서드 rangeClosed - boxed 오버헤드, 청크")
+    @Test
+    @Order(4)
+    void rangeClosedSum() {
+        log.info("RangeClosed sum done in: {} msecs", measureSumPerformance(ParallelStreams::rangedSum, 30_000_000));
+    }
+
+    @DisplayName("특화된 메서드 rangeClosed Parallel - boxed 오버헤드, 청크")
+    @Test
+    @Order(5)
+    void rangeClosedParallelSum() {
+        log.info("RangeClosed Parallel sum done in: {} msecs", measureSumPerformance(ParallelStreams::parallelRangedSum, 30_000_000));
     }
 
     private long measureSumPerformance(Function<Long, Long> adder, long n) {

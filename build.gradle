@@ -15,6 +15,7 @@ subprojects {
     testCompile 'org.assertj:assertj-core:3.10.0'
     testCompileOnly 'org.projectlombok:lombok:1.18.10'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.10'
+    testCompile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
   }
 
   test {

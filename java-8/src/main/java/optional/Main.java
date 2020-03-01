@@ -12,6 +12,7 @@ public class Main {
         Optional<Insurance> optionalInsurance = Optional.ofNullable(insurance);
         Optional<Insurance> optionalInsurance2 = Optional.ofNullable(insurance2);
 
+        // Optional은 최대 한 개의 요소를 포함할 수 있는 스트림과 같다.
         // Optional이 값을 포함하면 map의 인수로 제공된 함수가 값을 바꾼다.
         // Optional이 비어있으면 아무 일도 일어나지 않는다.
         Optional<String> name1 = optionalInsurance.map(Insurance::getName);
@@ -22,7 +23,7 @@ public class Main {
 
 
         Car car = new Car(optionalInsurance);
-        Person person = new Person(Optional.ofNullable(car));
+        Person person = new Person(15, Optional.ofNullable(car));
         Optional<Person> optionalPerson = Optional.of(person);
 
         // 아래의 map() 체인은 컴파일 에러가 난다.

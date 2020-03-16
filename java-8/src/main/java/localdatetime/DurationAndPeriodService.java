@@ -8,6 +8,9 @@ import java.time.temporal.ChronoUnit;
 
 public class DurationAndPeriodService {
     public static void main(String[] args) {
+        // Duration 은 두 시간 사이의 간격을
+        // Period 는 두 날짜의 사이의 간격을
+
         // LocalDateTime, LocalTime, Instant는 Temparal의 구현체이다.
         // 두개의 LocalDateTime, 두개의 LocalTime, 두개의 Instant로 Duration을 만들 수 있다.
         System.out.println("\n-- Duration");
